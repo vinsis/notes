@@ -12,11 +12,10 @@ Consider a function $f$ that maps $x \in \mathbb{R}^n$ (or $\mathbb{C}^n$) to $y
 
 $$f\begin{pmatrix} \blue{x_1} \\ \vdots \\ \blue{x_n} \end{pmatrix} = \begin{pmatrix} \pink{y_1} \\ \vdots \\ \pink{y_n} \end{pmatrix}, \qquad \pink{y_i} = p_i(\blue{x_1}, \blue{x_2}, \dots, \blue{x_n})$$
 
-Now add some constraints:
+Now add some constraints by making these assumptions:
 
-- This function may or may not be invertible. 
-- Assume it is invertible. The inverse function $g$ may or may not be a polynomial.
-- Assume it is a polynomial function.
+- This function may or may not be invertible. Assume it is invertible. 
+- The inverse function $g$ may or may not be a polynomial. Assume it is a polynomial function.
 
 Under this assumption the Jacobian determinant $\det J_f$ has to be a non-zero constant.
 
@@ -54,8 +53,6 @@ Thus, what people had was this:
 
 $$\underbrace{f, \; g \text{ both polynomial on } \mathbb{R}^n \text{ or } \mathbb{C}^n, \quad g \circ f = \text{id}}_{\amber{\text{what we assumed}}} \; \Longrightarrow \; \underbrace{\det J_f = c \ne 0}_{\green{\text{what we get}}}$$
 
-The field genuinely does not matter here. The only thing the argument used was that degrees add under multiplication, $\deg(PQ) = \deg P + \deg Q$, which is true over $\mathbb{R}$ and $\mathbb{C}$ alike. The fundamental theorem of algebra is a $\mathbb{C}$-only fact and does not enter until the next section, which is exactly where $\mathbb{R}$ and $\mathbb{C}$ start behaving differently.
-
 ---
 
 ### Implication: local and global invertibility
@@ -68,7 +65,7 @@ Thus global invertibility implies local invertibility everywhere. **Two unique i
 Now one can ask:
 - If a function is locally invertible everywhere, does it make it globally invertible? A handwavy but useful way to frame it is:
 
-> If two arbitrarily close but unique input points always map to unique output points, does it imply that two unique input points, no matter how far apart they are, also map to unique output points? 
+> If nearby points don't share an output, does it guarantee that distant points also don't share one?
 
 Plainly said, does local invertibility imply global invertibility?
 
@@ -327,7 +324,7 @@ This conjecture was [disproven by a counterexample](https://scholar.google.com/s
 ### A detour to constant Jacobian real polynomial maps
 Another interesting development in this area was related to the case of inverse polynomial maps for constant Jacobian functions i.e. polynomial functions with a constant Jacobian that also had an inverse polynomial function. Every example could be decomposed to one of these three patterns:
 
-**An affine map** $f(x) = Ax + b$, whose Jacobian is the constant matrix $A$ itself:
+**1. An affine map** $f(x) = Ax + b$, whose Jacobian is the constant matrix $A$ itself:
 
 $$f\begin{pmatrix} \blue{x} \\ \pink{y} \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} \blue{x} \\ \pink{y} \end{pmatrix} + \begin{pmatrix} 3 \\ -1 \end{pmatrix} = \begin{pmatrix} 2\blue{x} + \pink{y} + 3 \\ \blue{x} + \pink{y} - 1 \end{pmatrix}$$
 
@@ -436,7 +433,7 @@ with group("tri-undo"):
     )
 ```
 
-**A triangular map**, where each coordinate is {its own variable}(ref:tri-start) {plus a polynomial}(ref:tri-bend) in the *earlier* variables only. The Jacobian is then triangular with $1$s on the diagonal, so its determinant is $1$ for free, and the inverse can be {read off by back-substitution}(ref:tri-undo):
+**2. A triangular map**, where each coordinate is {its own variable}(ref:tri-start) {plus a polynomial}(ref:tri-bend) in the *earlier* variables only. The Jacobian is then triangular with $1$s on the diagonal, so its determinant is $1$ for free, and the inverse can be {read off by back-substitution}(ref:tri-undo):
 
 $$f\begin{pmatrix} \blue{x} \\ \pink{y} \end{pmatrix} = \begin{pmatrix} \blue{x} \\ \pink{y} + \blue{x}^3 \end{pmatrix}, \qquad f^{-1}\begin{pmatrix} \blue{u} \\ \pink{v} \end{pmatrix} = \begin{pmatrix} \blue{u} \\ \pink{v} - \blue{u}^3 \end{pmatrix}$$
 
@@ -548,7 +545,7 @@ with group("tame-rule"):
     gm.set_fill(summary, c["COLOR-GRAY-LIGHT"])
 ```
 
-**A composition of the above maps**, which is where it stops being obvious. Compose the triangular $T$ with the {affine coordinate swap}(ref:tame-frame) $A$:
+**3. A composition of the above maps**, which is where it stops being obvious. Compose the triangular $T$ with the {affine coordinate swap}(ref:tame-frame) $A$:
 
 $$T\begin{pmatrix} \blue{x} \\ \pink{y} \end{pmatrix} = \begin{pmatrix} \blue{x} \\ \pink{y} + \blue{x}^2 \end{pmatrix}, \qquad A\begin{pmatrix} \blue{x} \\ \pink{y} \end{pmatrix} = \begin{pmatrix} \pink{y} \\ \blue{x} \end{pmatrix}$$
 
@@ -582,8 +579,7 @@ $$\underbrace{\det J_f = c \ne 0}_{\amber{\text{constant, non-zero Jacobian}}} \
 #### Why is it guaranteed to be polynomial?
 The proof follows these arguments:
 - the polynomial inverse, if it exists, has to be of the form $x_i = \frac{N_i(y)}{D_i(y)}$ i.e. it is a fraction of two polynomials.
-  - uses the fact that the only invertible polynomial in $\mathbb{C}$ is of the form $f(z) = az + b$ - something we saw earlier.
-- Since it always exists, $D_i(y) \ne 0$, which is possible only if $D_i(y)$ is a constant. Thus $x_i$ is a polynomial for all $i$.
+- Since it exists everywhere, $D_i(y) \ne 0$ at every point, which is possible only if $D_i(y)$ is a constant. Thus $x_i$ is a polynomial for all $i$.
 
 $$x_i = \frac{N_i(y)}{\underbrace{D_i(y)}_{\amber{\text{never vanishes} \; \Rightarrow \; \text{constant}}}} \; \Longrightarrow \; \underbrace{x_i \text{ is a polynomial in } y}_{\green{\text{the inverse is polynomial}}}$$
 
@@ -710,7 +706,7 @@ with group("imp-verdict"):
     gm.set_fill(footer, c["COLOR-GRAY-LIGHT"])
 ```
 
-The conjecture essentially claims that for polynomials functions, local invertibility {implies global invertibility}(ref:imp-table).
+The conjecture essentially claims that for polynomials function, local invertibility {implies global invertibility}(ref:imp-table).
 
 This is a {massive claim}(ref:imp-conclusion) because, outside of complex polynomials, local invertibility {does not guarantee}(ref:imp-verdict) global invertibility. We saw the example of $e^z$ earlier.  
 
