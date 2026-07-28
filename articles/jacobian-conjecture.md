@@ -708,10 +708,11 @@ with group("imp-verdict"):
 
 The conjecture essentially claims that for polynomials function, local invertibility {implies global invertibility}(ref:imp-table).
 
-This is a {massive claim}(ref:imp-conclusion) because, outside of complex polynomials, local invertibility {does not guarantee}(ref:imp-verdict) global invertibility. We saw the example of $e^z$ earlier.  
+This was a {massive claim}(ref:imp-conclusion) because, outside of complex polynomials, local invertibility {does not guarantee}(ref:imp-verdict) global invertibility. We saw the example of $e^z$ earlier.  
 
 $$\begin{aligned}
 \text{any holomorphic } f: \quad & \underbrace{f'(z) \ne 0 \text{ everywhere}}_{\amber{\text{local}}} \; \overset{\rose{\times}}{\Longrightarrow} \; \underbrace{f \text{ is injective}}_{\rose{\text{fails: } e^z}} \\ \\
-\text{polynomial } f: \quad & \underbrace{\det J_f = c \ne 0}_{\amber{\text{local}}} \; \overset{?}{\Longrightarrow} \; \underbrace{f \text{ is injective}}_{\green{\text{the conjecture}}}
+\text{polynomial } f: \quad & \underbrace{\det J_f = c \ne 0}_{\amber{\text{local}}} \; \overset{\rose{\times}}{\Longrightarrow} \; \underbrace{f \text{ is injective}}_{\rose{\text{recently proven false}}}
 \end{aligned}$$
 
+It was disproved only recently (July 2026) for dimension $n \ge 3$. It still remains an open conjecture for $n = 2$.
