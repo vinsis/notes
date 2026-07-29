@@ -14,8 +14,8 @@ $$f\begin{pmatrix} \blue{x_1} \\ \vdots \\ \blue{x_n} \end{pmatrix} = \begin{pma
 
 Now add some constraints by making these assumptions:
 
-- This function may or may not be invertible. Assume it is invertible. 
-- The inverse function $g$ may or may not be a polynomial. Assume it is a polynomial function.
+- Assume it is invertible, with $g$ being the inverse function. 
+- Assume the inverse $g$ is a polynomial function.
 
 Under this assumption the Jacobian determinant $\det J_f$ has to be a non-zero constant.
 
@@ -305,7 +305,7 @@ J_f &= \begin{pmatrix}
 
 #
 
-> Therefore, for polynomial maps over complex numbers, saying "the Jacobian is a non-zero constant" and saying "the map is locally invertible everywhere" are mathematically identical statements.
+> Therefore, for polynomial maps over complex numbers, saying "the Jacobian is a non-zero constant" and saying "the map is locally invertible everywhere" are mathematically equivalent statements.
 
 - However, in the field $\mathbb{R}$, they are not the same thing. E.g. $x^2 + 1$ is always positive but not constant.
 
