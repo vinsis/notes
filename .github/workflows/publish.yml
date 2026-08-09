@@ -9,4 +9,5 @@ jobs:
       # This is the default extension loaded in tiny volt, so it is also the default extension that pygeomatic uses.
       extensions: https://tinyvolt.github.io/geomatic-math-extensions/manifest.json
       # Match the version Nova's editor installs from PyPI so preview == published output.
-      pygeomatic-ref: v0.3
+      # pygeomatic-ref: v0.3
+      pygeomatic-ref: marimo
